@@ -1,9 +1,12 @@
 import React from 'react'
 
-export default function UserList() {
+
+
+export default function UserList(props) {
   return (
     <div>
-      <h2>hello userlist</h2>
+      <h2>name</h2>
+      <h4>email</h4>
     </div>
   )
 }

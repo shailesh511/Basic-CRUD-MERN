@@ -6,7 +6,7 @@ export default function User() {
 
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
-
+  let usersList = [];
   const createUser = async (obj) => {
     try{
     const res = await axios.post("/createuser", obj);
@@ -27,7 +27,16 @@ export default function User() {
     createUser(obj);
   }
 
-
+  const getUsers = async()=>{
+    try{
+      const res = await axios.get("/getusers");
+      usersList = res.data
+    }
+    catch(e)
+    {
+      console.log(e);
+    }
+  }
 
   return (
     <div>
@@ -41,6 +50,7 @@ export default function User() {
         <button type="submit" className="btn btn-primary">Submit</button>
       </form>
       <div style={{"top":"250px","position":"absolute","left":"0px"}}>
+        <button onClick={getUsers}>get users</button>
       <UserList/>
       </div>
     </div>
