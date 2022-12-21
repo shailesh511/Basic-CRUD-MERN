@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import axios from 'axios'
+import UserList from './UserList';
 export default function User() {
 
 
@@ -39,6 +40,9 @@ export default function User() {
         </div>
         <button type="submit" className="btn btn-primary">Submit</button>
       </form>
+      <div style={{"top":"250px","position":"absolute","left":"0px"}}>
+      <UserList/>
+      </div>
     </div>
   )
 }
