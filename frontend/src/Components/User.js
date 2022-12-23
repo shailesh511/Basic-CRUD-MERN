@@ -58,9 +58,7 @@ export default function User() {
 
         {
           usersList.length > 0 ? usersList.map((ele) =>
-          // <UserList name={ele.name} email= {ele.email}/>
-           ele.name 
-           //ele.email 
+            <UserList name={ele.name} email={ele.email}/>
            ) : "No Data"
       }
       </div>
