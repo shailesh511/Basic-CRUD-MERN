@@ -27,6 +27,9 @@ exports.updateUser = async (req, res)=>{
     try{
      const fname = req.body.name;
      const femail = req.body.email;
+     
+     if(!(fname || femail))
+     res.status(400).send("All Fields are mandatory")
 
         const existing = await userModel.findOne({name : fname});
         if(!existing)

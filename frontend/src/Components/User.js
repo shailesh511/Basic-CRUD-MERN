@@ -42,6 +42,26 @@ export default function User() {
     }
   }
 
+  const updateUser = async ()=>{
+    
+     const fname = prompt("enter the name");
+     const femail = prompt("enter the email");
+
+     const obj = {
+      name: fname,
+      email: femail
+     }
+    try{
+    const res = await axios.post("/updateuser", obj)
+    
+    console.log("update user response"+res)
+    alert(res.data)
+    }catch(e){
+      alert(e.response.data);
+      console.log(e.response.data);
+    }
+  }
+
   return (
     <div>
       <form onSubmit={handleSubmit}>
@@ -53,12 +73,14 @@ export default function User() {
         </div>
         <button type="submit" className="btn btn-primary">Submit</button>
       </form>
-      <button onClick={getUsers}>get users</button>
-      <div style={{ "top": "250px", "position": "absolute", "left": "0px" }}>
+      <button style={{ "top": "210px", "position": "absolute", "left": "0px" }} onClick={getUsers}>get users</button>
+      <button style={{ "top": "210px", "position": "absolute", "left": "100px" }} onClick={updateUser}>Update user</button>
+
+      <div>
 
         {
-          usersList.length > 0 ? usersList.map((ele) =>
-            <UserList name={ele.name} email={ele.email}/>
+          usersList.length > 0 ? usersList.map((ele, index) =>
+            <UserList key={index} name={ele.name} email={ele.email}/>
            ) : "No Data"
       }
       </div>
